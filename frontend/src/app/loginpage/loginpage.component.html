@@ -1,0 +1,31 @@
+<div class="container-fluid">
+
+  <div class="login-header">Login</div>
+
+  <div class="alert alert-danger" *ngIf="errorMsg" style="display:block; width: 29%; margin:auto;">
+    {{ errorMsg }}
+  </div>
+
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()" style="display:inline-block">
+    <div class="form-group">
+      <label class="labels">Email</label>
+      <input type="email" required #email="ngModel" pattern="^[a-zA-Z]+[a-zA-Z0-9_]*@[a-zA-Z]+.com$" [class.is-invalid]="email.invalid && email.touched" class="form-control" name="email" [(ngModel)]="loginModel.email">
+      <div *ngIf="email.errors && (email.invalid || email.touched)" style="text-align: left">
+        <small class="text-danger" *ngIf="email.errors.required && email.touched">Email required.</small> 
+      </div>
+        <small class="form-text text-muted" style="text-align: left">(Example: abc@xyz.com, abc123@xyz.com, abc_123@xyz.com)</small>
+    </div>
+
+    <div class="form-group">
+      <label class="labels">Password</label>
+      <input type="password" required #password="ngModel" pattern="^[a-zA-Z0-9]{8,}$" [class.is-invalid]="password.invalid && password.touched" class="form-control" name="password" [(ngModel)]="loginModel.password">
+      <div *ngIf="password.errors && (password.invalid || password.touched)" style="text-align: left">
+        <small class="text-danger" *ngIf="password.errors.required && password.touched">Password is required.</small> 
+      </div>
+      <small class="form-text text-muted" style="text-align: left">Must be atleast 8 characters.</small>
+    </div>
+
+    <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary">Login</button>
+
+  </form>
+</div>

@@ -1,0 +1,61 @@
+<div class="home">
+    <i class="material-icons" (click)="onHomeClick()">home</i>
+</div>
+
+<div class="sidenav">
+  <ul class="sidebar-menu">
+    <li class="menu-item">
+      Compensation
+      <ul> 
+        <li class="submenu-item">
+          <a routerLink="/payslip" (click)="onMenuClick()" routerLinkActive="active">PaySlip</a></li></ul>
+        </li>
+    <li class="menu-item">
+      Tax
+      <ul> 
+        <li class="submenu-item">
+          <a routerLink="/investment" (click)="onMenuClick()" routerLinkActive="active">Investment Declaration</a></li></ul>
+    </li>
+  </ul>
+
+  <div class="sidebar-userdetails">
+      <span class="user-icon">
+          <i class="material-icons" style="color:#3c8dbc; font-size: 70px; text-align: left">person</i>
+      </span>
+          <span class="user-details">
+            <span>{{userData.first_name}} {{userData.last_name}}</span><br/>
+            <span><i>Employee code: </i>{{userData.emp_id}}</span>
+          </span>    
+  </div>
+</div>
+<div class="main-cont">
+  <div *ngIf="!menuClick" class="home-content">Important Documents</div>
+  <table *ngIf="!menuClick">
+    <tr>
+      <td>
+        <img class = "image" src="/assets/img/welcome-new-employee.jpg">
+        <p>New Joiner Aid</p>
+      </td>
+      <td>
+        <img class = "image" src="/assets/img/meal_card.jpg">
+        <p>Digital Meal Card FAQ</p>
+      </td>
+      <td>
+        <img class = "image" src="/assets/img/csr2.jpg">
+          <p>CSR Activities</p>
+        </td>
+    </tr>
+    <tr>
+      <td>
+        <img class = "image" src="/assets/img/Income-Tax-Return-min.jpg">
+          <p>File your tax returns</p>
+        </td>
+      <td>
+          <img class = "image" src="/assets/img/faq.jpg">
+            <p>FAQs</p>
+          </td>
+    </tr>
+  </table>
+<router-outlet></router-outlet>
+</div>
+

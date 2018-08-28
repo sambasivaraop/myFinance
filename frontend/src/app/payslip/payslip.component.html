@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="yearmonth-container">
+    <div class="caption"> PaySlip </div>
+    <div class="yearmonth">
+      <select class = "month-select" #monthSelected (change)="onMonthChange(monthSelected.value)" style="background-color: #f8f8ff">
+        <option value=""> Month </option>
+        <option *ngFor="let month of monthList" [selected]="month==currentMonth">{{month}}</option>
+      </select>
+      <select class = "year-select" #yearSelected (change)="onYearChange(yearSelected.value)" style="background-color: #f8f8ff">
+        <option value=""> Year </option>
+        <option *ngFor="let year of yearList" [selected]="year==currentYear">{{year}}</option>
+      </select>
+      </div>
+  </div>
+
+  <div *ngFor="let payslip of payslips | monthyear:month:year">
+    <object class="pdf" [data]="getSafeUrl(payslip.payslip)" type="application/pdf" width="800px" height="800px"></object>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="title">Investment Declaration</div>
+    <div class="existingdetails">Existing Declarations</div>
+    <table *ngIf="existingDetails">
+            <tr>
+                <th>Investment Type</th>
+                <th>Investment Name</th>
+                <th>Name of the Institution</th>
+                <th>Policy Number</th>
+                <th>Declaration Amount (Rs.)</th>
+            </tr>
+            <tr *ngFor="let detail of existingDetails">
+                    <td>{{ detail.type }}</td>
+                    <td>{{ detail.type_80c }}</td>
+                    <td>{{ detail.institute_name }}</td>
+                    <td>{{ detail.policy_no }}</td>
+                    <td *ngIf="!detail.rent_amnt_PA">{{ detail.declaration }}</td>
+                    <td *ngIf="detail.rent_amnt_PA">{{ detail.rent_amnt_PA }}</td>
+            </tr>
+        </table>
+    <form *ngIf="investModel" #investmentForm="ngForm" (ngSubmit)="onSubmit(investmentForm)" style="display:inline-block; padding-top: 25px;">
+ 
+        <div class="alert alert-success" *ngIf="submitStatus">
+                Declaration has been submitted successfully.
+        </div>
+        
+        <div class="form-group">
+            <label class="labels">Employee Id: </label>
+            <input type="text" #empId="ngModel" disabled class="form-control" name="empid" [(ngModel)]="investModel.employee">
+        </div>
+
+        <div class="form-group">
+            <label class="labels">Investment: </label>
+            <select class="custom-select" (change)="checkInvestment(investmentType.value)" #investmentType="ngModel" required [class.is-invalid]="investmentType.invalid && investmentType.touched"
+                name="investmentType" [(ngModel)]="investModel.type">
+                <option value="" selected>Select Your Investment type</option>
+                <option *ngFor="let item of getInvestmentList()">{{ item }}</option>
+            </select>
+            <div *ngIf="investmentType.errors && (investmentType.invalid || investmentType.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="investmentType.errors.required && investmentType.touched">Please select Investment Type</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isInvestmentSelected && is80c && !isRent">
+            <label class="labels">80C Type: </label>
+            <select class="custom-select" #invest80c="ngModel" required [class.is-invalid]="invest80c.invalid && invest80c.touched" name="invest80c"
+                [(ngModel)]="investModel.type_80c">
+                <option value="" selected>Select Your 80C type</option>
+                <option *ngFor="let item of get80CList()">{{ item }}</option>
+            </select>
+            <div *ngIf="invest80c.errors && (invest80c.invalid || invest80c.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="invest80c.errors.required && invest80c.touched">Please select 80C Type</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isInvestmentSelected && !isRent">
+            <label class="labels">Name of the Institution: </label>
+            <input type="text" #institution="ngModel" required [class.is-invalid]="institution.invalid && institution.touched" class="form-control"
+                name="institution" [(ngModel)]="investModel.institute_name">
+            <div *ngIf="institution.errors && (institution.invalid || institution.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="institution.errors.required && institution.touched">Institution is Required</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isInvestmentSelected && !isRent">
+            <label class="labels">Policy Number: </label>
+            <input type="text" #policy="ngModel" required [class.is-invalid]="policy.invalid && policy.touched" class="form-control"
+                name="policy" [(ngModel)]="investModel.policy_no">
+            <div *ngIf="policy.errors && (policy.invalid || policy.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="policy.errors.required && policy.touched">Policy No. is Required</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isInvestmentSelected && !isRent">
+            <label class="labels">Declaration Amount (Rs.): </label>
+            <input type="text" pattern="^\d+$" #declaration="ngModel" required [class.is-invalid]="declaration.invalid && declaration.touched"
+                class="form-control" name="declaration" [(ngModel)]="investModel.declaration">
+            <div *ngIf="declaration.errors && (declaration.invalid || declaration.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="declaration.errors.required && declaration.touched">Amount is Required</small>
+                <small class="text-danger" *ngIf="declaration.errors.pattern && declaration.touched">Amount should be in digits</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isRent">
+            <label class="labels">Rental Address: </label>
+            <input type="text" #rentaddress="ngModel" required [class.is-invalid]="rentaddress.invalid && rentaddress.touched" class="form-control"
+                name="rentAddress" [(ngModel)]="investModel.rental_address">
+            <div *ngIf="rentaddress.errors && (rentaddress.invalid || rentaddress.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="rentaddress.errors.required && rentaddress.touched">Address is Required</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isRent">
+            <label class="labels">Rental Amount per Month (Rs.): </label>
+            <input type="text" pattern="^\d+$" #monthrentamount="ngModel" required [class.is-invalid]="monthrentamount.invalid && monthrentamount.touched"
+                class="form-control" name="rentAmountMonth" [(ngModel)]="investModel.rent_amnt_PM">
+            <div *ngIf="monthrentamount.errors && (monthrentamount.invalid || monthrentamount.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="monthrentamount.errors.required && monthrentamount.touched">Amount is Required</small>
+                <small class="text-danger" *ngIf="monthrentamount.errors.pattern && monthrentamount.touched">Amount should be in digits</small>
+            </div>
+        </div>
+
+        <div class="form-group" *ngIf="isRent">
+            <label class="labels">Rental Amount per Annum (Rs.): </label>
+            <input type="text" pattern="^\d+$" #yearrentamount="ngModel" required [class.is-invalid]="yearrentamount.invalid && yearrentamount.touched"
+                class="form-control" name="rentAmountYear" [(ngModel)]="investModel.rent_amnt_PA">
+            <div *ngIf="yearrentamount.errors && (yearrentamount.invalid || yearrentamount.touched)" style="text-align: left">
+                <small class="text-danger" *ngIf="yearrentamount.errors.required && yearrentamount.touched">Amount is Required</small>
+                <small class="text-danger" *ngIf="yearrentamount.errors.pattern && yearrentamount.touched">Amount should be in digits</small>
+            </div>
+        </div>
+
+        <button [disabled]="investmentForm.form.invalid" type="submit" class="btn btn-primary">Submit Declaration</button>
+
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <div class="banner">
+      <span class="title">{{title}}</span>
+      <span><a class="logout" *ngIf="loginData.token" href='' (click)="onLogout()">| Logout</a></span>
+      <span class="welcome" *ngIf="loginData.token">Hello, {{loginData.email}}&nbsp;</span>
+  </div>
+  <app-homepage *ngIf="loginData.token" [userData]="loginData"></app-homepage>
+  <app-loginpage (loginEvent)="getLoginDetails($event)" *ngIf="!loginData.token"></app-loginpage>
+  <!-- <app-homepage *ngIf="Isloggedin()" [userData]="loginData"></app-homepage>
+  <app-loginpage (loginEvent)="getLoginDetails($event)" *ngIf="!Isloggedin()"></app-loginpage> -->
+</div>

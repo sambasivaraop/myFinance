@@ -1,0 +1,14 @@
+.login-header{
+    color: #3c8dbc;
+    font-size: 35px;
+    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
+    font-weight: 300;
+    padding: 20px 0px 30px 0px;
+}
+.labels{
+    color: #3c8dbc;
+    font-size: 15px;
+    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
+    font-weight: 600;
+    float:left;
+}
