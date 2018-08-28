@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# migration
+migrations/
+
+*.gitignore
+*.idea*
+media/
+staticfiles/
+static/
