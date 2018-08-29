@@ -111,3 +111,6 @@ migrations/
 media/
 staticfiles/
 static/
+
+#frontend
+package-lock.json
