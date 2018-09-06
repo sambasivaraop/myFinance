@@ -9,6 +9,8 @@ body{
 
 .main-cont{
     margin-left: 250px;
+    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
+    color: #3c8dbc;
 }
 
 .sidenav{
@@ -19,10 +21,11 @@ body{
 }
 .sidebar-menu{
     list-style: none;
-    text-align: center;
+    text-align: left;
+    padding-left: 0;
 }
 .menu-item{
-    padding: 20px 40px 10px 10px;    
+    padding: 10px 10px 10px 10px;    
     position: relative;
     font-size: 18px;
     color: white;
@@ -31,23 +34,20 @@ body{
     font-weight:400;
 }
 .submenu-item a{ 
-    width: 100px;
-    padding: 10px 40px 10px 10px;   
-    text-align:center;
+    padding: 10px 10px 10px 50px;   
     color: white;
     font-size: 13px;
-    background-color: #333;
     display: block;
+    text-decoration: none;
 }
 .sidebar-menu li ul {
     display:none;
-    position:fixed;
+    padding-left: 0;
+    background: #2c3b41;
 }
 .sidebar-menu li:hover ul{
-    display: inline-block;
+    display: block;
     list-style: none;
-    left:130px;
-    position:relative;
 }
 
 li a.active{
@@ -76,15 +76,11 @@ table, th, td {
     font-size: 12px;
     font-weight: 600;
     text-align: center;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
-    color: #3c8dbc;
     margin: 30px auto;
  }
 .home-content{
-    color: #3c8dbc;
     font-size: 15px;
     text-align:center;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     padding-top: 50px;
     font-weight: 600;
 }
@@ -94,4 +90,7 @@ table, th, td {
     padding: 10px;
     display: block;
     margin: 0 auto;
+}
+.nav-icons{
+    vertical-align: middle;
 }

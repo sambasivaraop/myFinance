@@ -1,22 +1,21 @@
 .container{
     width: 800px;
-    margin: 25px auto;
+    margin: 0 auto;
+    color: #3c8dbc;
+    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
 }
 
 .caption{
     display: inline-block;
     width: 50%;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     font-size: 35px;
-    color: #3c8dbc;
     font-weight: 300;
     text-align: left;
+    padding-top:20px;
 }
 .yearmonth{
     text-align: right;
     width: 50%;
-    color: #3c8dbc;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     display: inline-block;
 }
 .pdf{

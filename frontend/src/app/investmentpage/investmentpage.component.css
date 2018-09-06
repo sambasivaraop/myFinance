@@ -1,15 +1,11 @@
 .title{
-    color: #3c8dbc;
     font-size: 35px;
     text-align: center;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     font-weight: 300;
     padding: 20px 0px 30px 80px;
 }
 .labels{
-    color: #3c8dbc;
     font-size: 15px;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     font-weight: 600;
     float:left;
 }
@@ -17,15 +13,11 @@ table, th, td {
     border: 1px solid #3c8dbc;
     font-size: 12px;
     text-align: center;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
-    color: #3c8dbc;
     margin: 0px auto;
  }
 .existingdetails{
-    color: #3c8dbc;
     font-size: 15px;
     text-align:center;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     padding-bottom:10px;
     font-weight: 600;
 }

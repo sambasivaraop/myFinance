@@ -3,7 +3,7 @@
   <div class="banner">
       <span class="title">{{title}}</span>
       <span><a class="logout" *ngIf="loginData.token" href='' (click)="onLogout()">| Logout</a></span>
-      <span class="welcome" *ngIf="loginData.token">Hello, {{loginData.email}}&nbsp;</span>
+      <span class="welcome" *ngIf="loginData.token">Hello, <i>{{loginData.email}}</i>&nbsp;</span>
   </div>
   <app-homepage *ngIf="loginData.token" [userData]="loginData"></app-homepage>
   <app-loginpage (loginEvent)="getLoginDetails($event)" *ngIf="!loginData.token"></app-loginpage>

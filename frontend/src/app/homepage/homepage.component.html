@@ -5,13 +5,13 @@
 <div class="sidenav">
   <ul class="sidebar-menu">
     <li class="menu-item">
-      Compensation
+      Compensation <i class="material-icons nav-icons">arrow_drop_down</i>
       <ul> 
         <li class="submenu-item">
           <a routerLink="/payslip" (click)="onMenuClick()" routerLinkActive="active">PaySlip</a></li></ul>
         </li>
     <li class="menu-item">
-      Tax
+      Tax <i class="material-icons nav-icons">arrow_drop_down</i>
       <ul> 
         <li class="submenu-item">
           <a routerLink="/investment" (click)="onMenuClick()" routerLinkActive="active">Investment Declaration</a></li></ul>
@@ -24,7 +24,7 @@
       </span>
           <span class="user-details">
             <span>{{userData.first_name}} {{userData.last_name}}</span><br/>
-            <span><i>Employee code: </i>{{userData.emp_id}}</span>
+            <span><i>Employee Id: </i>{{userData.emp_id}}</span>
           </span>    
   </div>
 </div>

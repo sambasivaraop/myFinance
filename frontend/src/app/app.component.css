@@ -1,25 +1,21 @@
 .banner{
     position: relative;
     background-color:#3c8dbc; 
+    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
+    color: white;
     max-height: 50px;
     padding: 30px;
 }
 
 .title{
     float: left;
-    color: white;
     font-size: 30px;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
     font-weight: 300;
-    display: block;
     line-height: 5px;
 }
 .welcome, .logout{
     float: right;
     color: white;
     font-size: 17px;
-    font-family: 'Helvetica Neue",Helvetica,Arial,sans-serif';
-    font-weight: 100;
-    display: block;
     line-height: 30px;
 }
